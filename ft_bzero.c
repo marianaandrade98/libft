@@ -6,7 +6,7 @@
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 13:15:03 by mandrade          #+#    #+#             */
-/*   Updated: 2021/02/09 18:00:25 by mandrade         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:37:15 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*p;
-	size_t			i;
-
-	p = s;
-	i = 0;
-	while (p[i] && i < n)
-	{
-		p[i] = '\0';
-		i++;
-	}
+	ft_memset(s, 0, n);
 }
