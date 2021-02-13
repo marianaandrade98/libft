@@ -14,7 +14,7 @@ ft_isprint:    [OK]
 ft_toupper:    [OK] 
 ft_tolower:    [OK] 
 ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strrchr:    [MISSING]
+ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strncmp:    [MISSING]
 ft_strlcpy:    [OK] [OK] [OK] [OK] [OK] [OK] {protected}
 ft_strlcat:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
