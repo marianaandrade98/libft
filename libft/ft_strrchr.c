@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mandrade <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:12:22 by mandrade          #+#    #+#             */
-/*   Updated: 2021/02/13 23:10:51 by mandrade         ###   ########.fr       */
+/*   Updated: 2021/02/15 17:24:30 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	int i;
-	
+
 	i = ft_strlen((char *)s);
 	while (0 != i && s[i] != (unsigned char)c)
 		i--;
