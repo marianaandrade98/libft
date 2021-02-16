@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mandrade <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 12:45:39 by mandrade          #+#    #+#             */
-/*   Updated: 2021/02/16 13:15:01 by mandrade         ###   ########.fr       */
+/*   Updated: 2021/02/16 19:41:00 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	ft_atoi(const char *str)
 {
 	int			sign;
 	long long	res;
-	
+
 	sign = 1;
 	res = 0;
 	while (*str == '\t' || *str == '\n' || *str == '\v' ||
-             *str == '\f' || *str == '\r' || *str == ' ')
+	*str == '\f' || *str == '\r' || *str == ' ')
 		str++;
 	if (*str == '-')
 	{
@@ -32,11 +32,11 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		res *= 10;
-        res += (sign * (*(str++) - '0'));
-        if (res > 2147483647)
-            return (-1);
-        if (res < -2147483648)
-            return (0);
+		res += (sign * (*(str++) - '0'));
+		if (res > 2147483647)
+			return (-1);
+		if (res < -2147483648)
+			return (0);
 	}
 	return (res);
 }
