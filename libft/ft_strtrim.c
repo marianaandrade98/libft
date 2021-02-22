@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mandrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 16:58:46 by mandrade          #+#    #+#             */
-/*   Updated: 2021/02/19 18:56:33 by mandrade         ###   ########.fr       */
+/*   Created: 2021/02/19 19:17:53 by mandrade          #+#    #+#             */
+/*   Updated: 2021/02/22 14:43:41 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char *ft_strtrim(char const *s1, char const *set)
 {
-	char	*p;
-	size_t	i;
-	size_t	s_len;
+    size_t		start;
+    size_t		len;
+    char		*p;
 
-	if (!s || !len)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-	{
-		p = malloc(sizeof(char));
-		if (!p)
-			return (0);
-		*p = '\0';
-		return (p);
-	}
-	if (s_len < len)
-		return (ft_strdup(s + start));
-	p = malloc(len + 1);
+    if (!s1 || !set)
+		return (0);
+    start = 0;
+    while (s1[start] && ft_strchr(set, s1[start]))
+        start++;
+    len = ft_strlen((char *)s1 + start);
+	if (len)
+		while (s1[len + start - 1] != 0 && ft_strchr(set, s1[len + start - 1]))
+			len--;
+    p = malloc(len + 1);
 	if (!p)
 		return (NULL);
-	i = 0;
-	while (start < s_len && i < len)
-		p[i++] = s[start++];
-	p[i] = '\0';
+    ft_strlcpy(p, s1 + start, len + 1);
+	p[len] = '\0';
 	return (p);
 }
