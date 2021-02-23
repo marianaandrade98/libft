@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 15:32:17 by mandrade          #+#    #+#             */
-/*   Updated: 2021/02/23 16:02:30 by mandrade         ###   ########.fr       */
+/*   Created: 2021/02/23 19:44:41 by mandrade          #+#    #+#             */
+/*   Updated: 2021/02/23 20:45:31 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	int		i;
+	char	*str;
+
+	if (!s || !f)
+		return (0);
+	if (!(str = malloc((ft_strlen(s) + 1) * sizeof(char))))
+		return (0);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

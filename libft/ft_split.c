@@ -6,7 +6,7 @@
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:29:59 by mandrade          #+#    #+#             */
-/*   Updated: 2021/02/22 20:55:55 by mandrade         ###   ########.fr       */
+/*   Updated: 2021/02/23 19:33:52 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ static size_t	char_counter(char const *s, char c)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**dst;
 	char	*str;
-	size_t	size;
 	size_t	i;
 
+	if (!s)
+		return (0);
 	if (!(dst = (char **)malloc(sizeof(char*) * char_counter(s, c) + 1)))
 		return (0);
 	i = 0;
@@ -48,10 +49,9 @@ char	**ft_split(char const *s, char c)
 			str = (char *)s;
 			while (*s && *s != c)
 				s++;
-			size = s - str + 1;
-			if (!(dst[i] = (char *)malloc(size)))
+			if (!(dst[i] = (char *)malloc(s - str + 1)))
 				return (0);
-			ft_strlcpy(dst[i++], str, size);
+			ft_strlcpy(dst[i++], str, s - str + 1);
 		}
 		else
 			s++;
