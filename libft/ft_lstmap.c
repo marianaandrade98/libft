@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 15:33:56 by mandrade          #+#    #+#             */
-/*   Updated: 2021/02/24 16:58:49 by mandrade         ###   ########.fr       */
+/*   Created: 2021/02/24 17:30:31 by mandrade          #+#    #+#             */
+/*   Updated: 2021/02/24 19:34:31 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*p;
-	size_t	i;
-	size_t	s_len;
+	t_list *new;
+	t_list *first;
 
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
+	first = NULL;
+	while (lst)
 	{
-		p = malloc(sizeof(char));
-		if (!p)
+		if (!(new = ft_lstnew(f(lst->content))))
+		{
+			ft_lstclear(&first, del);
 			return (0);
-		*p = '\0';
-		return (p);
+		}
+		ft_lstadd_back(&first, new);
+		lst = lst->next;
 	}
-	if (s_len < len)
-		return (ft_strdup(s + start));
-	p = malloc(len + 1);
-	if (!p)
-		return (NULL);
-	i = 0;
-	while (start < s_len && i < len)
-		p[i++] = s[start++];
-	p[i] = '\0';
-	return (p);
+	return (first);
 }

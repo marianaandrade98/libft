@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/16 21:07:54 by mandrade          #+#    #+#             */
-/*   Updated: 2021/02/24 17:00:23 by mandrade         ###   ########.fr       */
+/*   Created: 2021/02/24 16:43:16 by mandrade          #+#    #+#             */
+/*   Updated: 2021/02/24 20:04:35 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (n < 0)
+	t_list *temp;
+
+	if (!new)
+		return ;
+	if (!*lst)
 	{
-		if (n == -2147483648)
-		{
-			ft_putstr_fd("-2147483648", fd);
-			return ;
-		}
-		ft_putchar_fd('-', fd);
-		n *= -1;
+		*lst = new;
+		return ;
 	}
-	if (n >= 10)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd((n % 10) + '0', fd);
+	temp = ft_lstlast(*lst);
+	temp->next = new;
 }
