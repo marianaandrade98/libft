@@ -14,11 +14,11 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	unsigned char *dest;
-	unsigned char *source;
+	unsigned char	*dest;
+	unsigned char	*source;
 
-	dest = (unsigned char*)dst;
-	source = (unsigned char*)src;
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
 	if (!dest && !source)
 		return (0);
 	if (source < dest)
@@ -29,9 +29,9 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 			*--dest = *--source;
 	}
 	else
+	{
 		while (n--)
-		{
 			*dest++ = *source++;
-		}
+	}
 	return (dst);
 }

@@ -14,7 +14,7 @@
 
 static size_t	char_counter(char const *s, char c)
 {
-	size_t count;
+	size_t	count;
 
 	count = 0;
 	while (*s)
@@ -31,15 +31,14 @@ static size_t	char_counter(char const *s, char c)
 	return (count);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**dst;
 	char	*str;
 	size_t	i;
 
-	if (!s)
-		return (0);
-	if (!(dst = (char **)malloc(sizeof(char*) * char_counter(s, c) + 1)))
+	dst = (char **)malloc(sizeof(char *) * char_counter(s, c) + 1);
+	if (!s || !dst)
 		return (0);
 	i = 0;
 	while (*s)
@@ -49,7 +48,8 @@ char			**ft_split(char const *s, char c)
 			str = (char *)s;
 			while (*s && *s != c)
 				s++;
-			if (!(dst[i] = (char *)malloc(s - str + 1)))
+			dst[i] = (char *)malloc(s - str + 1);
+			if (!dst)
 				return (0);
 			ft_strlcpy(dst[i++], str, s - str + 1);
 		}

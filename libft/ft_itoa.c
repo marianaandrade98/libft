@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char		*ft_strreve(char *s)
+static char	*ft_strreve(char *s)
 {
 	int		i;
 	int		len;
@@ -30,7 +30,7 @@ static char		*ft_strreve(char *s)
 	return (s);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		sign;
 	int		i;
